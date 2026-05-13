@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { DUMMY_USERS } from '../dummy-users';
 
+const random = Math.floor(Math.random() * DUMMY_USERS.length);
+
 @Component({
   selector: 'app-user',
   imports: [],
@@ -8,5 +10,13 @@ import { DUMMY_USERS } from '../dummy-users';
   styleUrl: './user.scss',
 })
 export class User {
-  selectedUser = DUMMY_USERS[0];
+  selectedUser = DUMMY_USERS[random];
+
+  get imagePath() {
+    return 'users/' + this.selectedUser.avatar;
+  }
+
+  onSelectUser() {
+    console.log('clicked!');
+  }
 }
